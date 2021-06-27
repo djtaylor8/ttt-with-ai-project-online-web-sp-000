@@ -1,3 +1,229 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+
+def pause
+    sleep 0.7
+  end
+  
+  def welcome_message
+    puts "========================================="
+    puts "Hey there! Welcome to Tic-tac-toe (w/ AI)"
+    puts "========================================="
+  end
+  
+  def game_mode_select_message
+    puts "What kind of game would you like to play?"
+    puts "    (1) - 1 player vs. 1 if/elsbot"
+    puts "    (2) - 1 player vs. 1 player"
+    puts "    (3) - 1 if/elsbot vs. itself"
+    puts "========================================="
+    puts "=input 1, 2, or 3 and hit enter to begin="
+    puts "========================================="
+  end
+  
+  def post_game_message
+    pause
+    puts "\n"
+    puts "\n"
+    puts "Wow, that was fun..."
+    pause
+    puts "Care to play again???"
+    puts "====================="
+    puts "~input Y(es) or N(o)~"
+  end
+  
+  def replay_game_message
+    puts "\n"
+    puts "========================================="
+    puts "==Awesome, lets start from the top then=="
+    puts "========================================="
+    pause
+    puts "\n"
+    puts "What kind of game would you like to play?"
+    puts "    (1) - 1 player vs. 1 if/elsbot"
+    puts "    (2) - 1 player vs. 1 player"
+    puts "    (3) - 1 if/elsbot vs. itself"
+    puts "========================================="
+    puts "=input 1, 2, or 3 and hit enter to begin="
+    puts "========================================="
+  end
+  
+  def replay_game
+    pause
+    replay_game_message
+    repeat_offender = gets.strip
+  
+    case repeat_offender
+    when "1"
+      Game.new(player_1 = Players::Human.new("X"), player_2 = Players::Computer.new("O"), board = Board.new).play
+    when "2"
+      Game.new.play
+    when "3"
+      Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"), board = Board.new).play
+    when "wargames"
+        puts "Whats this...."
+        pause
+        pause
+        pause
+        puts "A HIDDEN GAME MODE NO WAY"
+        pause
+        counter = 0
+        while counter < 100
+          Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"), board = Board.new).play
+          counter += 1
+        end
+    else
+      pause
+      pause
+      pause
+      puts "One sec... processing your bad input"
+      pause
+      pause
+      pause
+      puts "You're going to have to try again, 1-3 integers only please"
+      puts "\n"
+      pause
+      short_game
+    end
+  
+    post_game_message
+    replay_input = gets.chomp.upcase
+  
+    case replay_input
+    when "Y"
+      replay_game
+    when "N"
+      pause
+      puts "Ok, thanks for playing!"
+    else
+      puts "I'll take that as a no then..."
+      pause
+      puts "See you later..."
+    end
+  
+  end
+  
+  def short_game
+    pause
+    game_mode_select_message
+    game_mode = gets.strip
+  
+    case game_mode
+    when "1"
+      Game.new(player_1 = Players::Human.new("X"), player_2 = Players::Computer.new("O"), board = Board.new).play
+    when "2"
+      Game.new.play
+    when "3"
+      Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"), board = Board.new).play
+    when "wargames"
+        puts "Whats this...."
+        pause
+        pause
+        pause
+        puts "A HIDDEN GAME MODE NO WAY"
+        pause
+        counter = 0
+        while counter < 100
+          Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"), board = Board.new).play
+          counter += 1
+        end
+    else
+      pause
+      pause
+      pause
+      puts "One sec... processing your bad input"
+      pause
+      pause
+      pause
+      puts "You're going to have to try again, 1-3 integers only please"
+      puts "\n"
+      pause
+      short_game
+    end
+  
+    post_game_message
+    replay_input = gets.chomp.upcase
+  
+    case replay_input
+    when "Y"
+      replay_game
+    when "N"
+      pause
+      puts "Ok, thanks for playing!"
+    else
+      puts "I'll take that as a no then..."
+      pause
+      puts "See you later..."
+    end
+  end
+  
+  def run_tictactoe
+  
+    welcome_message
+    pause
+    game_mode_select_message
+    game_mode = gets.strip
+  
+    case game_mode
+    when "1"
+      Game.new(player_1 = Players::Human.new("X"), player_2 = Players::Computer.new("O"), board = Board.new).play
+    when "2"
+      Game.new.play
+    when "3"
+      Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"), board = Board.new).play
+    when "wargames"
+        puts "Whats this...."
+        pause
+        pause
+        pause
+        puts "A HIDDEN GAME MODE NO WAY"
+        pause
+        counter = 0
+        while counter < 100
+          Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"), board = Board.new).play
+          counter += 1
+        end
+    else
+      pause
+      pause
+      pause
+      puts "One sec... processing your bad input"
+      pause
+      pause
+      pause
+      puts "You're going to have to try again, 1-3 integers only please"
+      puts "\n"
+      pause
+      short_game
+    end
+  
+    post_game_message
+    replay_input = gets.chomp.upcase
+  
+    case replay_input
+    when "Y"
+      replay_game
+    when "N"
+      pause
+      puts "Ok, thanks for playing!"
+    else
+      puts "I'll take that as a no then..."
+      pause
+      puts "See you later..."
+    end
+  end
+  
+  
+  
+  run_tictactoe
+  
+  
+    # when 'wargames'
+    #   counter = 0
+    #   while counter < 100
+    #     Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"), board = Board.new).play
+    #     counter += 1
+    #   end
+    # end
